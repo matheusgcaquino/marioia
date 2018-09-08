@@ -10,16 +10,15 @@ class RandomAgent(marioai.Agent):
 
 
 class TestAgent(marioai.Agent):
+    vision = []
+    rew = 0
+
     def sense(self, obs):
         super(TestAgent, self).sense(obs)
+        self.vision.append(self.level_scene)
 
 
     def act(self):
-        #if (len(self.enemies_floats) > 0):
-            #print(">>>>>>>>>>>>>>")
-            #print("<<<<<<<<<<<<<<<")
-
-        print(self)
 
         pulo = random.randint(0, 1)
         dire = 1
@@ -35,4 +34,4 @@ class TestAgent(marioai.Agent):
 
 
     def give_rewards(self, reward, cum_reward):
-        print(reward)
+            self.rew = reward
