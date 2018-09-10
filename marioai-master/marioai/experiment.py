@@ -26,8 +26,12 @@ class Experiment(object):
             r = self._step()
             rewards.append(r)
 
+            
             if self.max_fps > 0:
-                time.sleep(start_time + 1./self.max_fps - time.time())
+                ts = start_time + 1./self.max_fps - time.time()
+                if ts < 0:
+                    ts *= -1
+                time.sleep(ts)
 
         return rewards
 
